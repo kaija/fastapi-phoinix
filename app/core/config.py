@@ -1,14 +1,7 @@
 
 from typing import Any, Dict, List, Optional, Union
 
-from pydantic import (
-        AnyHttpUrl,
-        BaseSettings,
-        PostgresDsn,
-        RedisDsn,
-        validator
-        )
-
+from pydantic import AnyHttpUrl, BaseSettings, PostgresDsn, validator
 
 
 class Settings(BaseSettings):
@@ -40,19 +33,7 @@ class Settings(BaseSettings):
             host=values.get("POSTGRES_SERVER"),
             path=f"/{values.get('POSTGRES_DB') or ''}",
         )
-
-    REDIS_SERVER: str
-    REDIS_PASSWORD: str
-    CACHE_URI: Optional[RedisDsn] = None
-
-    @validator("CACHE_URI", pre=True)
-    def assemble_cache_connection(cls, v: Optional[str], values: Dict[str, Any]) -> Any:
-        if isinstance(v, str):
-            return v
-        return RedisDsn.build(
-            scheme="redis",
-            host=values.get("REDIS_SERVER"),
-        )
+    
 
     class Config:
         case_sensitive = True

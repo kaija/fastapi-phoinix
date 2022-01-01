@@ -2,15 +2,11 @@
 name = "phoinix"
 version = "0.1.0"
 description = ""
-authors = ["kaija <kaija.chang@gmail.com>"]
+authors = ["kevin_k_chang <kevin_k_chang@trendmicro.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
-fastapi = "^0.61.2"
-redis = "^3.5.3"
-click = "^7.1.2"
-SQLAlchemy = "^1.4.3"
-psycopg2-binary = "^2.8.6"
+python = "^3.9"
+fastapi = "^0.70.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
@@ -25,6 +21,3 @@ black = "^20.8b1"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.plugins."app.modules"]
-"setting" = "api.setting"
